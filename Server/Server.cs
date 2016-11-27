@@ -65,7 +65,7 @@ namespace ChatServer
                         var message = messageBuilder.ToString().TrimEnd();
                         message = $"{holder.Name}: \"{message}\"{Environment.NewLine}";
                         Console.WriteLine(message);
-                        BroadcastMessage(message);
+                        BroadcastMessage(message, holder);
                     }
                 } 
                 catch (Exception e)
@@ -114,15 +114,18 @@ namespace ChatServer
             BroadcastMessage(message);
         }
 
-        void BroadcastMessage(string message) 
+        void BroadcastMessage(string message, ChatClientHolder owner = null) 
         {
             lock(clients)
             {
                 byte[] writeBuffer = Encoding.UTF8.GetBytes(message);
                 foreach( var client in clients )
                 {
-                    var stream = client.Client.GetStream();
-                    stream.Write(writeBuffer, 0, writeBuffer.Length);
+                    if( (owner == null) || (owner != client) ) 
+                    { 
+                        var stream = client.Client.GetStream();
+                        stream.Write(writeBuffer, 0, writeBuffer.Length);
+                    }
                 }
             }
         }
