@@ -9,11 +9,14 @@
     "netcoreapp1.0": {
       "dependencies": {
         "Microsoft.NETCore.App": {
-          "type": "platform",
           "version": "1.0.1"
         }
       },
       "imports": "dnxcore50"
     }
+  },
+  "runtimes": {
+    "win10-x64": {},
+    "osx.10.10-x64": {}
   }
 }
