@@ -1,12 +1,21 @@
 ﻿using System;
 
-namespace ConsoleApplication
+namespace ChatClient
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            if( args.Length > 0 ) 
+            {
+                var addressStr = args[0];
+                var client = new ChatClient(addressStr);
+                client.Process();
+            }
+            else
+            {
+                Console.WriteLine("No address provided.");
+            }
         }
     }
 }

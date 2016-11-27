@@ -7,9 +7,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             "program": "${workspaceRoot}/bin/Debug/netcoreapp1.0/Client.dll",
-            "args": [],
+            "args": ["127.0.0.1:80"],
             "cwd": "${workspaceRoot}",
-            "externalConsole": false,
+            "externalConsole": true,
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"
         },
