@@ -4,7 +4,8 @@
     {
         public static void Main(string[] args) 
         {
-            var server = new Server(80);
+            var port = 80;
+            var server = new Server(port);
             server.Process();
         }
     }
